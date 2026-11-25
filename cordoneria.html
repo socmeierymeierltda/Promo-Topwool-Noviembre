@@ -214,8 +214,8 @@ p.sec{text-align:center;margin:0 0 10px;font-size:14px}
       <label>Empresa / tienda<input name="empresa"></label>
       <label>Teléfono<input name="telefono" type="tel" inputmode="tel"></label>
       <label>Ciudad / comuna *<input name="ciudad" required></label>
-      <label>Entrega
-        <select name="entrega"><option>Despacho</option><option>Retiro</option></select>
+      <label>Despacho *
+        <select name="despacho" required><option value="">Elige cómo recibir tu pedido</option><option>Blue Express</option><option>Cacem</option><option>Fedex</option><option>Retiro Temuco</option><option>Retiro Curacautín</option></select>
       </label>
       <label>Forma de pago
         <select name="pago"><option>Transferencia bancaria</option><option>Tarjeta de crédito</option></select>
@@ -430,7 +430,7 @@ function buildMessage() {
   L.push(`*Pedido Top Wool – Black Friday ${CFG.name}*`, '');
   L.push(`*Cliente:* ${f.nombre}` + (f.empresa ? ` (${f.empresa})` : ''));
   if (f.telefono) L.push(`*Teléfono:* ${f.telefono}`);
-  L.push(`*Ciudad:* ${f.ciudad}`, `*Entrega:* ${f.entrega}`, `*Pago:* ${f.pago}`, '');
+  L.push(`*Ciudad:* ${f.ciudad}`, `*Despacho:* ${f.despacho}`, `*Pago:* ${f.pago}`, '');
   FAMS.forEach(fam => {
     const ls = c.lines.filter(l => l.fam === fam); if (!ls.length) return;
     L.push(`*${fam.name}* (${qtxt(c.famKg[fam.id])})`);
@@ -449,6 +449,7 @@ function validate() {
   if (!compute().lines.length) return 'Agrega al menos un producto.';
   if (!f.nombre?.trim()) return 'Ingresa tu nombre.';
   if (!f.ciudad?.trim()) return 'Ingresa tu ciudad o comuna.';
+  if (!f.despacho) return 'Elige el despacho o retiro.';
   if (f.vendedor == null) return 'Elige a quién enviar el pedido.';
   return '';
 }
