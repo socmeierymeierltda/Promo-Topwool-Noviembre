@@ -177,6 +177,8 @@ p.sec{text-align:center;margin:0 0 10px;font-size:14px}
 .choose .go{display:inline-block;margin-top:12px;background:var(--rust);color:#fff;border-radius:12px;padding:11px 20px;font-weight:600}
 .choose .k{color:var(--rust);font-weight:600;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
 @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+/* Teléfono y tablet: campos de 16px (el iPhone no hace zoom al tocarlos) y botones + / − más grandes */
+@media (max-width:1024px){form.cust input,form.cust select,form.cust textarea,.qty input{font-size:16px}.qty button{width:42px;height:42px}.qty input{height:42px}}
 @media (max-width:620px){.grid{grid-template-columns:1fr}.fam-head h2{font-size:22px}.pg{font-size:12.5px}.choose{grid-template-columns:1fr}}
 </style>
 </head>
